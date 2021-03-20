@@ -40,8 +40,8 @@ function MessageBoard() {
   });
 
   return (
-    <div>
-      <ul>{messageItems}</ul>
+    <div className='row justify-content-center'>
+      <ul className='col-8'>{messageItems}</ul>
       <NewMessage />
     </div>
   );
