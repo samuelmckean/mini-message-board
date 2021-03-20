@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
   res.json(messages);
 });
 
+// create a new message entry
 app.post('/new', (req, res) => {
   try {
     // parse request data and push onto messages array
