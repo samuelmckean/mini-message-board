@@ -14,6 +14,9 @@ const getMessages = async () => {
   try {
     const response = await instance.get('/');
     const messages = response.data;
+    messages.forEach((message) => {
+      message.added = new Date(message.added);
+    });
     return messages;
   } catch {
     return Error('Error getting messages');
