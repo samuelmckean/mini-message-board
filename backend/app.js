@@ -30,7 +30,6 @@ app.get('/', (req, res) => {
 app.post('/new', (req, res) => {
   try {
     // parse request data and push onto messages array
-    console.log(req.body);
     const message = {
       text: req.body.messageText,
       user: req.body.messageUser,
