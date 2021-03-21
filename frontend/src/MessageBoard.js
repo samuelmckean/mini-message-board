@@ -33,6 +33,23 @@ function MessageBoard() {
     setMessages(messages.concat(message));
   }
 
+  // removes a message from the state
+  const removeMessage = (message) => {
+    const removedMessage = messages.filter((item) => {
+      if (message.user !== item.user) {
+        return true;
+      }
+      if (message.text !== item.text) {
+        return true;
+      }
+      if (message.added !== item.added) {
+        return true;
+      }
+      return false;
+    });
+    setMessages(removedMessage);
+  }
+
   // sets the state to the message from the backend on mount
   useEffect(() => {
     const fetchData = async () => {
@@ -54,7 +71,7 @@ function MessageBoard() {
           <ul>{messageItems}</ul>
         </div>
       </div>
-      <NewMessage axios={instance} addMessage={addMessage} />
+      <NewMessage axios={instance} addMessage={addMessage} removeMessage={removeMessage} />
     </div>
   );
 }
