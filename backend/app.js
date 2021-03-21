@@ -35,7 +35,6 @@ app.post('/new', (req, res) => {
       user: req.body.user,
       added: new Date(),
     };
-    console.log(message);
     messages.push(message);
     res.sendStatus(201);
   } catch {
