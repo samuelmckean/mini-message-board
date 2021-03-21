@@ -28,6 +28,11 @@ function MessageBoard() {
   // create state for messages array
   const [messages, setMessages] = useState([]);
 
+  // adds a message to the current state
+  const addMessage = (message) => {
+    setMessages(messages.concat(message));
+  }
+
   // sets the state to the message from the backend on mount
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +54,7 @@ function MessageBoard() {
           <ul>{messageItems}</ul>
         </div>
       </div>
-      <NewMessage />
+      <NewMessage axios={instance} addMessage={addMessage} />
     </div>
   );
 }
