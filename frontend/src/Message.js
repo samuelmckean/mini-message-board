@@ -2,7 +2,6 @@ import { formatDistanceToNow } from 'date-fns';
 
 function Message({ message }) {
   const { text, user, added } = message;
-  console.log(typeof added);
   return (
     <li>
       <div className='card'>
