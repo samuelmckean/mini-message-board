@@ -31,11 +31,11 @@ app.post('/new', (req, res) => {
   try {
     // parse request data and push onto messages array
     const message = {
-      text: req.body.messageText,
-      user: req.body.messageUser,
+      text: req.body.text,
+      user: req.body.user,
       added: new Date(),
     };
-
+    console.log(message);
     messages.push(message);
     res.sendStatus(201);
   } catch {
