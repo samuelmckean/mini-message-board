@@ -74,14 +74,14 @@ function MessageBoard() {
   return (
     <div>
       <div className='row justify-content-center'>
-        <div className='col-8'>
+        <div className='col-12 col-md-8'>
           <ul>{messageItems}</ul>
         </div>
       </div>
       {
         errorFlag &&
         <div className='row justify-content-center'>
-          <div className='col-8'>
+          <div className='col-12 col-md-8'>
             <div className='alert alert-danger'>{'Error: could not get messages.'}</div>
           </div>
         </div>

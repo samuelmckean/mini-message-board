@@ -69,7 +69,7 @@ function NewMessage({ axios, addMessage, removeMessage }) {
 
   return (
     <div className='row justify-content-center'>
-      <div className='col-8'>
+      <div className='col-12 col-md-8'>
         <form onSubmit={handleSubmit} noValidate>
           <div className='card'>
             <div className='card-body'>
