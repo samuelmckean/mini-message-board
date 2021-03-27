@@ -19,7 +19,7 @@ const getMessages = async () => {
     });
     return messages;
   } catch {
-    return Error('Error getting messages');
+    throw Error('Error getting messages');
   }
 }
 
@@ -27,6 +27,8 @@ const getMessages = async () => {
 function MessageBoard() {
   // create state for messages array
   const [messages, setMessages] = useState([]);
+  // create state for error alert
+  const [errorFlag, setErrorFlag] = useState(false);
 
   // adds a message to the current state
   const addMessage = (message) => {
@@ -53,8 +55,13 @@ function MessageBoard() {
   // sets the state to the message from the backend on mount
   useEffect(() => {
     const fetchData = async () => {
-      const messages = await getMessages();
-      setMessages(messages);
+      try {
+        const messages = await getMessages();
+        setMessages(messages);
+        setErrorFlag(false);  // reset error flag if it was true
+      } catch(err) {
+        setErrorFlag(true);
+      }
     }
     fetchData();
   }, []);
@@ -71,6 +78,14 @@ function MessageBoard() {
           <ul>{messageItems}</ul>
         </div>
       </div>
+      {
+        errorFlag &&
+        <div className='row justify-content-center'>
+          <div className='col-8'>
+            <div className='alert alert-danger'>{'Error: could not get messages.'}</div>
+          </div>
+        </div>
+      }
       <NewMessage axios={instance} addMessage={addMessage} removeMessage={removeMessage} />
     </div>
   );
