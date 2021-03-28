@@ -5,11 +5,11 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 // get PORT from env
-const PORT = process.env.PORT || 3000;
+const URL = window.location.href || 'http://localhost:3000';
 
 // set the base url for making API requests
 const instance = axios.create({
-  baseURL: `https://0.0.0.0:${PORT}`,
+  baseURL: URL,
 });
 
 // get the messages from the backend
