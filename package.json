@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "node app.js",
+    "dev": "nodemon app.js",
     "heroku-postbuild": "cd frontend && yarn && yarn build"
   },
   "dependencies": {

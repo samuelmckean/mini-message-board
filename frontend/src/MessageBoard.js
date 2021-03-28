@@ -12,7 +12,7 @@ const instance = axios.create({
 // get the messages from the backend
 const getMessages = async () => {
   try {
-    const response = await instance.get('/');
+    const response = await instance.get('/get-messages');
     const messages = response.data;
     messages.forEach((message) => {
       message.added = new Date(message.added);

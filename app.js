@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Message = require('./Message');
+const path = require('path');
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ const URL = process.env.DB_URL;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'frontend', 'build')));
 
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
@@ -34,7 +36,7 @@ const getMessages = async () => {
 }
 
 // homepage
-app.get('/', async (req, res) => {
+app.get('/get-messages', async (req, res) => {
   try {
     const messages = await getMessages();
     res.json(messages);
@@ -58,6 +60,11 @@ app.post('/new', async (req, res) => {
     console.log('Error: could not add to database');
     res.sendStatus(400);
   }
+});
+
+// send single-page react app on any route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
 });
 
 app.listen(PORT, () => {
