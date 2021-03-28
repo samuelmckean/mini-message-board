@@ -4,7 +4,7 @@ import uniqid from 'uniqid';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-// get PORT from env
+// get url from browser
 const URL = window.location.href || 'http://localhost:3000';
 
 // set the base url for making API requests
