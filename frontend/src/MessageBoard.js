@@ -4,9 +4,12 @@ import uniqid from 'uniqid';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+// get PORT from env
+const PORT = process.env.PORT || 3000;
+
 // set the base url for making API requests
 const instance = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: `https://0.0.0.0:${PORT}`,
 });
 
 // get the messages from the backend
